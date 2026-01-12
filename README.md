@@ -1,73 +1,114 @@
-# React + TypeScript + Vite
+# Art Institute of Chicago Artworks Explorer
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+Live Demo: **https://artic-article.netlify.app/**
 
-Currently, two official plugins are available:
+A React + TypeScript application that displays paginated artwork data from the **Art Institute of Chicago API**. Built with **PrimeReact UI components** and featuring **server-side pagination**, **persistent selection**, and **custom row selection** functionality.
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Babel](https://babeljs.io/) (or [oxc](https://oxc.rs) when used in [rolldown-vite](https://vite.dev/guide/rolldown)) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+---
 
-## React Compiler
+## 🚀 Features
 
-The React Compiler is not enabled on this template because of its impact on dev & build performances. To add it, see [this documentation](https://react.dev/learn/react-compiler/installation).
+✔ Server-side pagination  
+✔ Displays artwork data:  
+- Title  
+- Place of Origin  
+- Artist  
+- Inscriptions  
+- Start Date  
+- End Date  
 
-## Expanding the ESLint configuration
+✔ Row selection with checkboxes  
+✔ Persistent selection across pages  
+✔ “Select N Rows” custom selection overlay  
+✔ No prefetching of extra pages (memory safe, high performance)  
+✔ Fully typed with TypeScript
 
-If you are developing a production application, we recommend updating the configuration to enable type-aware lint rules:
+---
 
-```js
-export default defineConfig([
-  globalIgnores(['dist']),
-  {
-    files: ['**/*.{ts,tsx}'],
-    extends: [
-      // Other configs...
+## 🛠 Technologies
 
-      // Remove tseslint.configs.recommended and replace with this
-      tseslint.configs.recommendedTypeChecked,
-      // Alternatively, use this for stricter rules
-      tseslint.configs.strictTypeChecked,
-      // Optionally, add this for stylistic rules
-      tseslint.configs.stylisticTypeChecked,
+- **Vite** – fast React development tooling  
+- **React + TypeScript**  
+- **PrimeReact** – DataTable + UI Components  
+- **Fetch API** – server-side pagination  
+- **Netlify** – deployed live
 
-      // Other configs...
-    ],
-    languageOptions: {
-      parserOptions: {
-        project: ['./tsconfig.node.json', './tsconfig.app.json'],
-        tsconfigRootDir: import.meta.dirname,
-      },
-      // other options...
-    },
-  },
-])
+---
+
+## 📦 Installation
+
+1. Clone the repository
+
+```bash
+git clone https://github.com/<your-username>/artic-artworks-table.git
+cd artic-artworks-table
+````
+
+2. Install dependencies
+
+```bash
+npm install
 ```
 
-You can also install [eslint-plugin-react-x](https://github.com/Rel1cx/eslint-react/tree/main/packages/plugins/eslint-plugin-react-x) and [eslint-plugin-react-dom](https://github.com/Rel1cx/eslint-react/tree/main/packages/plugins/eslint-plugin-react-dom) for React-specific lint rules:
+3. Start development server
 
-```js
-// eslint.config.js
-import reactX from 'eslint-plugin-react-x'
-import reactDom from 'eslint-plugin-react-dom'
+```bash
+npm run dev
+```
 
-export default defineConfig([
-  globalIgnores(['dist']),
-  {
-    files: ['**/*.{ts,tsx}'],
-    extends: [
-      // Other configs...
-      // Enable lint rules for React
-      reactX.configs['recommended-typescript'],
-      // Enable lint rules for React DOM
-      reactDom.configs.recommended,
-    ],
-    languageOptions: {
-      parserOptions: {
-        project: ['./tsconfig.node.json', './tsconfig.app.json'],
-        tsconfigRootDir: import.meta.dirname,
-      },
-      // other options...
-    },
-  },
-])
+---
+
+## 🧠 How It Works
+
+### Server-side Pagination
+
+The app fetches only the currently visible page from the Art Institute of Chicago:
+
+```
+https://api.artic.edu/api/v1/artworks?page=<page>&limit=12
+```
+
+No pre-fetching — efficient for large datasets.
+
+### Persistent Selection
+
+Selection state is stored externally and will persist:
+
+* when navigating between pages,
+* when selecting/deselecting rows,
+* and when using custom “Select N Rows” mode.
+
+This is done without fetching or storing records from other pages.
+
+---
+
+## 📌 Project Structure
+
+```
+src/
+├─ api.ts              # API functions
+├─ types.ts            # TypeScript types
+├─ components/
+│   └─ ArtworksTable.tsx
+├─ App.tsx
+└─ main.tsx
+```
+
+---
+
+## 👀 Try It Yourself
+
+👉 Live app: [https://artic-article.netlify.app](https://artic-article.netlify.app)
+
+---
+
+## 💬 Feedback
+
+If you find any issues or want to suggest improvements, feel free to open an issue or submit a pull request!
+
+---
+
+
+
+If you want, I can also generate a **GitHub repo template** version or enhance it with **badges (CI/CD, coverage, size, etc.)**!
 ```
