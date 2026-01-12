@@ -102,13 +102,4 @@ src/
 
 ---
 
-## 💬 Feedback
 
-If you find any issues or want to suggest improvements, feel free to open an issue or submit a pull request!
-
----
-
-
-
-If you want, I can also generate a **GitHub repo template** version or enhance it with **badges (CI/CD, coverage, size, etc.)**!
-```
